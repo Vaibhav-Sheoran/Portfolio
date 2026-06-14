@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { motion } from 'framer-motion'
 import gsap from 'gsap'
 import HlsVideo from '../components/HlsVideo'
 
@@ -11,6 +12,12 @@ const SOCIALS = [
   { name: 'GitHub', href: 'https://github.com/Vaibhav-Sheoran' },
   { name: 'LinkedIn', href: 'https://linkedin.com/in/vaibhav-sheoran' },
   { name: 'Twitter/X', href: 'https://x.com/' },
+]
+
+const CONTACT_INFO = [
+  { label: 'Email', value: 'vaibhav.sheoran.dev@gmail.com', href: 'mailto:vaibhav.sheoran.dev@gmail.com' },
+  { label: 'Location', value: 'India', href: undefined },
+  { label: 'Availability', value: 'Open for full-time roles & freelance', href: undefined },
 ]
 
 export default function ContactSection() {
@@ -42,37 +49,61 @@ export default function ContactSection() {
         <div className="overflow-hidden mb-12 md:mb-16">
           <div
             ref={marqueeRef}
-            className="whitespace-nowrap text-3xl md:text-5xl lg:text-6xl font-black uppercase text-white/[0.07] tracking-wider"
+            className="whitespace-nowrap text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black uppercase text-white/[0.07] tracking-wider"
           >
             {MARQUEE_REPEATED}
           </div>
         </div>
 
-        <div className="flex flex-col items-center text-center px-6 mb-16">
-          <span className="text-xs text-[#888] uppercase tracking-[0.3em] mb-4">
+        <div className="flex flex-col items-center text-center px-4 sm:px-6 mb-12 md:mb-16">
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-xs text-[#888] uppercase tracking-[0.3em] mb-4"
+          >
             Get in touch
-          </span>
-          <a
+          </motion.span>
+          <motion.a
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
             href="mailto:vaibhav.sheoran.dev@gmail.com"
-            className="text-xl sm:text-2xl md:text-4xl font-display italic text-white hover:opacity-70 transition-opacity duration-200 relative group"
+            className="text-lg sm:text-2xl md:text-4xl font-display italic text-white hover:opacity-70 transition-opacity duration-200 break-all sm:break-normal"
           >
             vaibhav.sheoran.dev@gmail.com ↗
-            <span
-              className="absolute -inset-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-              style={{
-                background: 'linear-gradient(90deg, #89AACC, #4E85BF)',
-                padding: '1px',
-                mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                maskComposite: 'exclude',
-                WebkitMaskComposite: 'xor',
-              }}
-            />
-          </a>
+          </motion.a>
         </div>
 
-        <footer className="flex flex-col sm:flex-row justify-between items-center gap-4 mt-16 pt-6 border-t border-white/[0.06] text-xs text-[#888] px-6 md:px-10">
+        <div className="max-w-[900px] mx-auto px-4 sm:px-6 mb-12 md:mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+            {CONTACT_INFO.map((item, i) => (
+              <motion.div
+                key={item.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="text-center p-4 sm:p-6 rounded-2xl bg-white/[0.03] border border-white/[0.06]"
+              >
+                <p className="text-[10px] sm:text-xs text-[#888] uppercase tracking-[0.2em] mb-2">{item.label}</p>
+                {item.href ? (
+                  <a href={item.href} className="text-sm sm:text-base text-white hover:text-[#00e5ff] transition-colors break-all">
+                    {item.value}
+                  </a>
+                ) : (
+                  <p className="text-sm sm:text-base text-white">{item.value}</p>
+                )}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        <footer className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4 mt-12 sm:mt-16 pt-6 border-t border-white/[0.06] text-[10px] sm:text-xs text-[#888] px-4 sm:px-6 md:px-10">
           <span>© 2026 Vaibhav Sheoran</span>
-          <div className="flex gap-4">
+          <div className="flex gap-3 sm:gap-4">
             {SOCIALS.map((s) => (
               <a
                 key={s.name}

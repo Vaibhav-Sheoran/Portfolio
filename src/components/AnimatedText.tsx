@@ -11,7 +11,7 @@ export default function AnimatedText({ text, className, style }: AnimatedTextPro
   const ref = useRef<HTMLParagraphElement>(null)
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['start 0.8', 'end 0.2'],
+    offset: ['start 0.9', 'start 0.3'],
   })
 
   const chars = text.split('')
@@ -37,17 +37,17 @@ function CharSpan({
   progress: MotionValue<number>
 }) {
   const start = index / total
-  const end = (index + 1) / total
-  const opacity = useTransform(progress, [start, end], [0.2, 1])
+  const end = Math.min((index + 1) / total + 0.02, 1)
+  const opacity = useTransform(progress, [start, end], [0.15, 1])
 
   return (
     <span className="relative inline-block">
-      <span className="invisible">{char === ' ' ? ' ' : char}</span>
+      <span className="invisible">{char === ' ' ? ' ' : char}</span>
       <motion.span
         className="absolute left-0 top-0"
         style={{ opacity }}
       >
-        {char === ' ' ? ' ' : char}
+        {char === ' ' ? ' ' : char}
       </motion.span>
     </span>
   )
