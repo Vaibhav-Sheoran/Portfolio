@@ -8,10 +8,6 @@
   padding: 0;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 html, body, #root {
   background: #050508;
   font-family: 'Kanit', sans-serif;

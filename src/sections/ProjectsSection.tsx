@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import LiveProjectButton from '../components/LiveProjectButton'
+import TiltCard from '../components/TiltCard'
 
 const PROJECTS = [
   {
@@ -87,7 +88,7 @@ function ProjectCard({ project, index, totalCards }: { project: typeof PROJECTS[
             <LiveProjectButton />
           </div>
 
-          <div className="flex gap-2 sm:gap-4">
+          <TiltCard className="flex gap-2 sm:gap-4">
             <div className="w-[40%] flex flex-col gap-2 sm:gap-4">
               <img
                 src={project.images.col1Top}
@@ -109,7 +110,7 @@ function ProjectCard({ project, index, totalCards }: { project: typeof PROJECTS[
                 className="w-full h-full object-cover rounded-[16px] sm:rounded-[30px] md:rounded-[50px]"
               />
             </div>
-          </div>
+          </TiltCard>
         </div>
       </motion.div>
     </div>

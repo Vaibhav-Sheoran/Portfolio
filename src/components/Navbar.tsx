@@ -32,18 +32,12 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const handleClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, link: string) => {
-    e.preventDefault()
-    const id = link.toLowerCase()
-    const el = document.getElementById(id)
-    if (el) {
-      isClickScrolling.current = true
-      setActive(link)
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      setTimeout(() => {
-        isClickScrolling.current = false
-      }, 1000)
-    }
+  const handleClick = useCallback((_e: React.MouseEvent<HTMLAnchorElement>, link: string) => {
+    isClickScrolling.current = true
+    setActive(link)
+    setTimeout(() => {
+      isClickScrolling.current = false
+    }, 1200)
   }, [])
 
   return (

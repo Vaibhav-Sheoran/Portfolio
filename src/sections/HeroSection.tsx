@@ -5,6 +5,7 @@ import FadeIn from '../components/FadeIn'
 import Magnet from '../components/Magnet'
 import ContactButton from '../components/ContactButton'
 import HlsVideo from '../components/HlsVideo'
+import ParticleField from '../components/ParticleField'
 
 const ROLES = ['Backend Dev', 'Full Stack Dev', 'Java Engineer', 'Problem Solver']
 
@@ -48,6 +49,7 @@ export default function HeroSection() {
         className="absolute inset-0 w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-black/30" />
+      <ParticleField />
       <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#0C0C0C] to-transparent" />
 
       <div className="relative z-20 flex flex-col flex-1">
