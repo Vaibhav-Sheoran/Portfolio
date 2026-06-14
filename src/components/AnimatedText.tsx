@@ -40,14 +40,18 @@ function CharSpan({
   const end = Math.min((index + 1) / total + 0.02, 1)
   const opacity = useTransform(progress, [start, end], [0.15, 1])
 
+  if (char === ' ') {
+    return <span className="inline-block w-[0.3em]">&nbsp;</span>
+  }
+
   return (
     <span className="relative inline-block">
-      <span className="invisible">{char === ' ' ? ' ' : char}</span>
+      <span className="invisible">{char}</span>
       <motion.span
         className="absolute left-0 top-0"
         style={{ opacity }}
       >
-        {char === ' ' ? ' ' : char}
+        {char}
       </motion.span>
     </span>
   )
