@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 
 const NAV_LINKS = ['Home', 'Skills', 'Projects', 'Contact']
+const SECTION_IDS = ['home', 'skills', 'projects', 'contact']
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -14,6 +15,41 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  useEffect(() => {
+    const observers: IntersectionObserver[] = []
+
+    SECTION_IDS.forEach((id, index) => {
+      const el = document.getElementById(id)
+      if (!el) return
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setActive(NAV_LINKS[index])
+            }
+          })
+        },
+        { threshold: 0.3, rootMargin: '-80px 0px -40% 0px' }
+      )
+
+      observer.observe(el)
+      observers.push(observer)
+    })
+
+    return () => observers.forEach((o) => o.disconnect())
+  }, [])
+
+  const handleClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, link: string) => {
+    e.preventDefault()
+    const id = link.toLowerCase()
+    const el = document.getElementById(id)
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+    setActive(link)
+  }, [])
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 md:pt-6 px-4">
       <div
@@ -22,7 +58,8 @@ export default function Navbar() {
         }`}
       >
         <a
-          href="#"
+          href="#home"
+          onClick={(e) => handleClick(e, 'Home')}
           className="relative w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 mr-1 group"
           style={{
             background: 'linear-gradient(90deg, #89AACC, #4E85BF)',
@@ -38,7 +75,7 @@ export default function Navbar() {
           <a
             key={link}
             href={`#${link.toLowerCase()}`}
-            onClick={() => setActive(link)}
+            onClick={(e) => handleClick(e, link)}
             className={`text-xs sm:text-sm rounded-full px-3 py-1.5 transition-all duration-200 ${
               active === link
                 ? 'text-white bg-white/10'

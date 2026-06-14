@@ -50,7 +50,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-black/30" />
       <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#0C0C0C] to-transparent" />
 
-      <div className="relative z-10 flex flex-col flex-1">
+      <div className="relative z-20 flex flex-col flex-1">
         <div className="pt-20 sm:pt-24 md:pt-28" />
 
         <div className="overflow-hidden mt-4 sm:mt-4 md:-mt-5 px-4 sm:px-0 flex flex-col items-center">
@@ -63,7 +63,7 @@ export default function HeroSection() {
           >
             Hi, i{'’'}m vaibhav
           </h1>
-          <div className="mt-3 md:mt-4 h-8 md:h-10 flex items-center justify-center">
+          <div className="mt-3 md:mt-4 h-8 md:h-10 flex items-center justify-center relative z-30">
             <AnimatePresence mode="wait">
               <motion.span
                 key={roleIndex}
@@ -81,7 +81,7 @@ export default function HeroSection() {
 
         <div className="flex-1" />
 
-        <div className="flex justify-between items-end pb-5 sm:pb-8 md:pb-10 px-4 sm:px-6 md:px-10">
+        <div className="flex justify-between items-end pb-5 sm:pb-8 md:pb-10 px-4 sm:px-6 md:px-10 relative z-30">
           <FadeIn delay={0.35} y={20}>
             <p
               className="blur-in text-[#a0d4e8] font-light uppercase tracking-wide leading-snug max-w-[140px] sm:max-w-[220px] md:max-w-[280px]"
@@ -96,7 +96,7 @@ export default function HeroSection() {
           </FadeIn>
         </div>
 
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-30">
           <span className="text-[10px] text-[#888] uppercase tracking-[0.3em]">Scroll</span>
           <div className="w-px h-10 bg-white/20 relative overflow-hidden">
             <div className="w-full h-3 bg-white/60 absolute animate-scroll-down" />
@@ -104,7 +104,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <FadeIn delay={0.6} y={30} className="absolute left-1/2 -translate-x-1/2 z-10 top-1/2 -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-0 w-[220px] sm:w-[320px] md:w-[420px] lg:w-[520px]">
+      <FadeIn delay={0.6} y={30} className="absolute left-1/2 -translate-x-1/2 z-10 bottom-0 w-[180px] sm:w-[260px] md:w-[340px] lg:w-[420px]">
         <Magnet
           padding={150}
           strength={3}
