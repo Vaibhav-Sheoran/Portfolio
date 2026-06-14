@@ -2,12 +2,16 @@ import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import LiveProjectButton from '../components/LiveProjectButton'
 import TiltCard from '../components/TiltCard'
+import ImageWithSkeleton from '../components/ImageWithSkeleton'
 
+// TODO: LIVE_PROJECT_BUTTON_PLACEHOLDER - Add liveUrl to each project
+// Add liveUrl: 'https://your-project-url.com' to each object below
 const PROJECTS = [
   {
     number: '01',
     category: 'Full Stack',
     name: 'E-Commerce Platform',
+    liveUrl: undefined, // Replace with actual URL
     images: {
       col1Top:
         'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055344_5eff02e0-87a5-41ce-b64f-eb08da8f33db.png&w=1280&q=85',
@@ -21,6 +25,7 @@ const PROJECTS = [
     number: '02',
     category: 'Full Stack',
     name: 'Travel Agency Platform',
+    liveUrl: undefined, // Replace with actual URL
     images: {
       col1Top:
         'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055654_911201c5-36d9-4bc6-bac7-331adfce159f.png&w=1280&q=85',
@@ -34,6 +39,7 @@ const PROJECTS = [
     number: '03',
     category: 'Internship — EPAM Systems',
     name: 'Enterprise Software Project',
+    liveUrl: undefined, // NDA / confidential - leave as undefined or set to '#'
     images: {
       col1Top:
         'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055759_963cfb0b-4bd1-4b0f-9d0a-09bd6cf95b2f.png&w=1280&q=85',
@@ -85,28 +91,28 @@ function ProjectCard({ project, index, totalCards }: { project: typeof PROJECTS[
                 </span>
               </div>
             </div>
-            <LiveProjectButton />
+            <LiveProjectButton href={project.liveUrl} />
           </div>
 
           <TiltCard className="flex gap-2 sm:gap-4">
             <div className="w-[40%] flex flex-col gap-2 sm:gap-4">
-              <img
+              <ImageWithSkeleton
                 src={project.images.col1Top}
-                alt=""
+                alt={project.name}
                 className="w-full object-cover rounded-[16px] sm:rounded-[30px] md:rounded-[50px]"
                 style={{ height: 'clamp(100px, 16vw, 230px)' }}
               />
-              <img
+              <ImageWithSkeleton
                 src={project.images.col1Bottom}
-                alt=""
+                alt={project.name}
                 className="w-full object-cover rounded-[16px] sm:rounded-[30px] md:rounded-[50px]"
                 style={{ height: 'clamp(120px, 22vw, 340px)' }}
               />
             </div>
             <div className="w-[60%]">
-              <img
+              <ImageWithSkeleton
                 src={project.images.col2}
-                alt=""
+                alt={project.name}
                 className="w-full h-full object-cover rounded-[16px] sm:rounded-[30px] md:rounded-[50px]"
               />
             </div>

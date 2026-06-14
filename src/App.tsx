@@ -5,6 +5,7 @@ import SmoothScroll from './components/SmoothScroll'
 import CustomCursor from './components/CustomCursor'
 import NoiseOverlay from './components/NoiseOverlay'
 import ResumeButton from './components/ResumeButton'
+import BackToTop from './components/BackToTop'
 import Navbar from './components/Navbar'
 import HeroSection from './sections/HeroSection'
 import MarqueeSection from './sections/MarqueeSection'
@@ -45,6 +46,7 @@ export default function App() {
         <NoiseOverlay />
         <Navbar />
         <ResumeButton />
+        <BackToTop />
         <HeroSection />
         <MarqueeSection />
         <AboutSection />

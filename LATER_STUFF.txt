@@ -1,0 +1,70 @@
+================================================================================
+TODO: REPLACE PLACEHOLDERS WITH ACTUAL DATA
+================================================================================
+
+Search for these keywords and replace with real values:
+
+1. SKILLS_SECTION_WHITE_BACKGROUND
+   File: src/sections/ServicesSection.tsx (line ~38)
+   Current: bg-white (white background)
+   Change to: bg-[#0a0f1a] border-t border-white/[0.04] (dark theme like rest)
+   Also change text colors from text-[#0C0C0C] to text-[#e0f7ff]
+   Steps: Search "bg-white" in ServicesSection.tsx and replace entire section
+          styling to match dark theme
+
+2. LIVE_PROJECT_BUTTON_PLACEHOLDER
+   File: src/sections/ProjectsSection.tsx (around line 87)
+   Current: LiveProjectButton component has no href
+   Add actual project links:
+   - E-Commerce Platform: https://your-ecommerce-demo.vercel.app
+   - Travel Agency Platform: https://your-travel-demo.vercel.app
+   - Enterprise Software: "Confidential / NDA" or link if allowed
+   Steps: Update LiveProjectButton to accept href prop, pass URLs from PROJECTS
+          array in ProjectsSection.tsx
+
+3. TWITTER_SOCIAL_LINK_EMPTY
+   File: src/sections/ContactSection.tsx (line ~10-14)
+   Current: { name: 'Twitter/X', href: 'https://x.com/' }
+   Replace with: your actual Twitter/X handle OR remove this entry entirely
+   Steps: Find SOCIALS array in ContactSection.tsx, either update href or
+          delete the Twitter/X object
+
+4. RESUME_PDF_PLACEHOLDER
+   File: public/resume.pdf
+   Current: Empty 0-byte file
+   Replace with: Your actual resume PDF
+   Steps: Export your resume as PDF, name it "resume.pdf", copy to public/
+          folder (overwrite existing file)
+
+5. FAVICON_VITE_DEFAULT
+   Files: public/favicon.svg, index.html (line 5)
+   Current: Default Vite React favicon
+   Replace with: Custom "VS" logo favicon
+   Steps:
+   a) Create 32x32 PNG or SVG with your VS logo (white on transparent/dark bg)
+   b) Save as public/favicon.svg or public/favicon.png
+   c) Update index.html line 5:
+      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+      (or type="image/png" href="/favicon.png" if using PNG)
+
+6. OG_IMAGE_MISSING
+   Files: public/og-image.jpg, index.html (lines with og-image.jpg references)
+   Current: Referenced in meta tags but doesn't exist
+   Steps: Create a 1200x630px JPG showing your name, title, and a preview of
+          the portfolio. Save as public/og-image.jpg
+          Tools: Figma, Canva, or Photoshop
+
+================================================================================
+
+OPTIONAL: CODE SPLITTING (#11)
+Why: Bundle is currently ~960KB. Code splitting lazy-loads heavy libraries
+     (gsap, hls.js) only when needed, reducing initial load time.
+Impact: Initial bundle drops to ~400KB, improves Time to Interactive by ~1.5s
+How:
+  1. In App.tsx, change imports to dynamic:
+     const HeroSection = lazy(() => import('./sections/HeroSection'))
+     // Repeat for sections with gsap/hls.js
+  2. Wrap section renders in <Suspense fallback={<Spinner />}>
+  3. Test with `npm run build` and check dist/ file sizes
+
+================================================================================

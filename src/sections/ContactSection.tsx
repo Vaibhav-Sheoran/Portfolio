@@ -8,10 +8,11 @@ const HLS_SRC = 'https://stream.mux.com/Aa02T7oM1wH5Mk5EEVDYhbZ1ChcdhRsS2m1NYyx4
 const MARQUEE_TEXT = 'AVAILABLE FOR WORK • OPEN TO COLLABORATE • LET\'S BUILD SOMETHING • '
 const MARQUEE_REPEATED = MARQUEE_TEXT.repeat(10)
 
+// TODO: TWITTER_SOCIAL_LINK_EMPTY - Replace with your actual Twitter/X handle or remove
 const SOCIALS = [
   { name: 'GitHub', href: 'https://github.com/Vaibhav-Sheoran' },
   { name: 'LinkedIn', href: 'https://linkedin.com/in/vaibhav-sheoran' },
-  { name: 'Twitter/X', href: 'https://x.com/' },
+  { name: 'Twitter/X', href: 'https://x.com/' }, // Replace with https://x.com/your_handle or delete this line
 ]
 
 const CONTACT_INFO = [
